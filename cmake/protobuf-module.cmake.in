@@ -40,16 +40,12 @@ function(PROTOBUF_GENERATE_PYTHON SRCS)
     return()
   endif()
 
-  if(PROTOBUF_GENERATE_CPP_APPEND_PATH)
-    set(_append_arg APPEND_PATH)
-  endif()
-
   if(DEFINED Protobuf_IMPORT_DIRS)
     set(_import_arg IMPORT_DIRS ${Protobuf_IMPORT_DIRS})
   endif()
 
   set(_outvar)
-  protobuf_generate(${append_arg} LANGUAGE cpp OUT_VAR _outvar ${_import_arg} PROTOS ${ARGN})
+  protobuf_generate(${append_arg} LANGUAGE python OUT_VAR _outvar ${_import_arg} PROTOS ${ARGN})
   set(${SRCS} ${_outvar} PARENT_SCOPE)
 endfunction()
 
